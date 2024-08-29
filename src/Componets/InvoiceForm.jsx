@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import InvoiceTemplate from "./InvoiceTemplate";
 import ReactToPrint from "react-to-print";
-
+import logo from "../assets/logo.png"
 function InvoiceForm() {
   const [date, setDate] = useState(new Date().toLocaleDateString());
   const [receiptNumber, setReceiptNumber] = useState(
@@ -89,8 +89,7 @@ function InvoiceForm() {
         {/* Header */}
         <div className="flex items-center text-black justify-between py-6 border-b border-gray-300">
           <div>
-            <h1 className="text-4xl text-left font-bold">Uddog</h1>
-            <p className="text-gray-600">Social Work Foundation</p>
+            <img src={logo} alt="" className=" w-[150px]" />
           </div>
           <div className="text-right font-semibold">
             <p className="text-xl">Date: {date}</p>

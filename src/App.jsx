@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import InvoiceForm from "./Componets/InvoiceForm";
-
+import Home from "./Componets/Home";
+import { authContext } from "./Provider/AuthProvider";
 function App() {
-  const [count, setCount] = useState(0);
+  const { user } = useContext(authContext);
 
   return (
     <>
-      <InvoiceForm />
+      <Home />
+      {user && <InvoiceForm />}
     </>
   );
 }
