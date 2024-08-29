@@ -1,8 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import InvoiceTemplate from "./InvoiceTemplate";
 import ReactToPrint from "react-to-print";
 import logo from "../assets/logo.png"
+import { authContext } from "../Provider/AuthProvider";
+import { sameul } from "../BillerData";
+
 function InvoiceForm() {
+  const{user} = useContext(authContext)
   const [date, setDate] = useState(new Date().toLocaleDateString());
   const [receiptNumber, setReceiptNumber] = useState(
     Math.floor(Math.random() * 1000000)
@@ -21,6 +25,9 @@ function InvoiceForm() {
     return `${monthName} ${year}`;
   }
 
+   const bilaerData = user?.email == 'sameulhasanbd@gmail.com' && sameul ;
+   console.log(bilaerData)
+ 
   function getFormData(e) {
     e.preventDefault();
     const form = e.target;
@@ -106,24 +113,28 @@ function InvoiceForm() {
               <input
                 type="text"
                 name="biller_name"
+                defaultValue={bilaerData.name}
                 placeholder="Full Name"
                 className="input input-bordered w-full "
               />
               <input
                 type="number"
                 name="number"
+                defaultValue={bilaerData.number}
                 placeholder="Number"
                 className="input input-bordered w-full"
               />
               <input
                 type="email"
                 name="email"
+                defaultValue={bilaerData.email}
                 placeholder="Email"
                 className="input input-bordered w-full"
               />
               <input
                 type="text"
                 name="address"
+                defaultValue={bilaerData.address}
                 placeholder="Address"
                 className="input input-bordered w-full"
               />
